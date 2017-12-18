@@ -102,3 +102,6 @@ ENV/
 
 # Intellij project settings
 .idea/
+
+# VSCode project settings
+.vscode/
