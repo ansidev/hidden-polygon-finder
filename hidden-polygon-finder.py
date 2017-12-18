@@ -1,3 +1,5 @@
+import time
+
 from polygon_same_name_generator import get_same_names_of_polygon
 from shape_data import ShapeData
 
@@ -47,11 +49,11 @@ def main():
         # Remove same names of polygon
         hidden_polygons = [x for x in hidden_polygons if x not in same_name_polygons]
         ignored_polygons += same_name_polygons
+        # Remove invalid path
         if last_point not in polygon_connected_points[first_point]:
             hidden_polygons.remove(path)
     print(str("Found " + str(len(hidden_polygons))) + " polygons")
     [print(polygon) for polygon in hidden_polygons]
-    print("Finished!")
 
 
 def find_polygon(point, connected_points, polygon_connected_points, wanted_polygon_points):
@@ -72,4 +74,7 @@ def find_polygon(point, connected_points, polygon_connected_points, wanted_polyg
 
 
 if __name__ == '__main__':
+    start = time.time()
     main()
+    end = time.time()
+    print("Finished in " + str(end - start))
